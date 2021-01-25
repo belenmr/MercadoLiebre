@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+	<!-- Head -->
+	<%- include('partials/head') %> 
+	<!-- /Head -->
+	
+<body>
+	<!-- Header -->
+	<%- include('partials/header') %>
+    <!-- /Header -->
+    
+
+    <div class="container">
+        <section class="detail">
+            <div class="row">
+                <div class="titulo col-12">
+                    <h2>Detalle de producto: <%= product.name %></h2>
+                </div>
+                <div class="col-12">
+                    <div class="contain text-left">
+                        <div class="row box">
+                            <div class="col-12 col-lg-8 imgContainer">
+                                <figure class="text-center">
+                                    <img src="/images/products/<%= product.image %> " alt="" class="img-fluid">
+                                </figure>
+                                <p><%= product.description %></p>
+                            </div>
+                            <div class="col-12 col-lg-4 data-product">
+                                <h3 class="name">
+                                    <%= product.name %> 
+                                </h3>
+                                <% if (product.discount != 0) { %>
+                                    <span class="descuento">$<%= product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %> / <strong><%- product.discount %>% OFF</strong></span>
+                                <% } %>
+                                <h2 class="price">$
+                                    <%- (product.price - product.price * product.discount / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %>
+                                </h2>
+                                <p class="icons"><i class="fas fa-credit-card mr-3 my-4"></i>Pagá en 12 cuotas sin interés</p>
+                                <p class="icons"><i class="fas fa-store mr-3 my-4"></i>Retiro gratis en locales del vendedor</p>
+                                <button>Comprar ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+	<!-- Footer -->
+	<%- include('partials/footer')  %>
+	<!-- /Footer -->
+
+	<!-- Scripts -->
+	<%- include('partials/scripts')  %>
+	<!-- /Scripts -->
+</body>
+</html>
